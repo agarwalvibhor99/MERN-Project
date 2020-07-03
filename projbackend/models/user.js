@@ -38,7 +38,7 @@ var userSchema = new mongoose.Schema({
         type: Array,
         default: []
     }
-})
+}, {timestamps: true})
 
 userSchema.virtual("password")
 .set(function(password){
@@ -55,7 +55,7 @@ userSchema.method = {
     authenticate: function(password){
         return this.securedPassword(password) === this.encry_password
     },
-    
+
     securedPassword: function(password){
         if(!password) return ""
         try{
