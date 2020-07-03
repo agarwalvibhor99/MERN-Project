@@ -1,0 +1,12 @@
+const express = require("express")
+const router = express.Router()
+
+const { getUserByID, getUser, getAllUser } = require("../controllers/user")
+const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth")
+
+router.param("userId", getUserByID)
+
+router.get("/user/:userId", isSignedIn, isAuthenticated, getUser)
+
+router.get("/users", getAllUser)
+module.exports = router
