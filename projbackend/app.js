@@ -12,6 +12,7 @@ const cors = require("cors")
 const authRoutes = require("./routes/auth")
 const userRoutes = require("./routes/user")
 const categoryRoutes = require("./routes/category")
+const productRoutes = require("./routes/product")
 
 // Database Connection
 mongoose.connect(process.env.DATABASE, {
@@ -34,6 +35,7 @@ app.use(cors())
 app.use("/api", authRoutes)     //authRoutes refer to signup, signin, logout
 app.use("/api", userRoutes)
 app.use("/api", categoryRoutes)
+app.use("/api", productRoutes)
 
 
 //PORT
