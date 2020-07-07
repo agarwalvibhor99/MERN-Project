@@ -1,5 +1,8 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {Link, withRouter} from "react-router-dom"
+import { signout, isAuthenticated } from '../auth/helper'
+
+
 
 const currentTabCheck = (history, path) => {
     if (history.location.pathname === path){
@@ -25,35 +28,42 @@ const NavigationBar = ({history}) => (
             </li>
             <li className="nav-item">
                 <Link style={currentTabCheck(history, "/user/dasboard")} className="nav-link" to="/user/dashboard">
-                    U. Dashboard
+                   U Dashboard
                 </Link>
 
             </li>
             <li className="nav-item">
                 <Link style={currentTabCheck(history, "/admin/dasboard")} className="nav-link" to="/admin/dashboard">
-                    A. Dashboard
+                    A Dashboard
                 </Link>
 
             </li>
-
+            
+            {!isAuthenticated() && (
+                <Fragment>
+                    <li className="nav-item">
+                        <Link style={currentTabCheck(history, "/signup")} className="nav-link" to="/signup">
+                            Signup
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link style={currentTabCheck(history, "/signin")} className="nav-link" to="/signin">
+                            Signin
+                        </Link>
+                    </li>
+                </Fragment>
+            )}
+            {isAuthenticated() &&(
             <li className="nav-item">
-                <Link style={currentTabCheck(history, "/signup")} className="nav-link" to="/signup">
-                    Signup
-                </Link>
-
-            </li>
-            <li className="nav-item">
-                <Link style={currentTabCheck(history, "/signin")} className="nav-link" to="/signin">
-                    Signin
-                </Link>
-
-            </li>
-            <li className="nav-item">
-                <Link style={currentTabCheck(history, "/signout")}  className="nav-link" to="/signout">
+                <span className="nav-link text-warning" onClick={() => {
+                    signout(() =>{
+                        history.push("/")
+                    })
+                }}>
                     Signout
-                </Link>
-
-            </li>
+                </span>
+             </li>
+            )}
         </ul>
     </div>
 

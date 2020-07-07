@@ -15,7 +15,7 @@ const Base = ({
                     <h2 className="display-4">{title}</h2>
                     <p className="lead">{description}</p> 
                 </div>
-                <div className="className">
+                <div className={className}>
                     {children}
                 </div>
             </div>
