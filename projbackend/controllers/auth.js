@@ -9,8 +9,7 @@ exports.signup = (req, res) => {
 
     if(!errors.isEmpty()){
         return res.status(422).json({
-            errorMsg: errors.array()[0].msg,            //Use param to add parameter
-            errorParam: errors.array()[0].param
+            error: errors.array()[0].msg,            //Use param to add parameter
         })
     }
 
