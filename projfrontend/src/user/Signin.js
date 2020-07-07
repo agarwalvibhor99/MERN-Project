@@ -6,7 +6,7 @@ import {signin, authenticate, isAuthenticated} from "../auth/helper" //index.js
 const Signin = () => {
 
     const [values, setValues] = useState({
-        email:"ravi@gmail.com",
+        email:"vibhoragarwal@gmail.com",
         password: "12345",
         error: "",
         loading: false,
@@ -39,18 +39,18 @@ const Signin = () => {
     }
 
     const performRedirect = () => {
-        if(didRedirect){
-            if(user && user.role === 1){           //coming from is authenticated line 18
-                return <Redirect to="/admin/dashboard" />
-            }
-            else{
-                return <Redirect to="/user/dashboard" />
-            }
+        //TODO: do a redirect here
+        if (didRedirect) {
+          if (user && user.role === 1) {
+            return <Redirect to="/admin/dashboard" />;
+          } else {
+            return <Redirect to="/user/dashboard" />;
+          }
         }
-        if(isAuthenticated()){
-            return <Redirect to="/" />
-        } 
-    } 
+        if (isAuthenticated()) {
+           return <Redirect to="/" />;
+        }
+      };
 
     const loadingMessage = () => {
         return(
@@ -99,7 +99,7 @@ const Signin = () => {
             {loadingMessage()}
             {errorMessage()}
             {signInForm()}
-            {performRedirect}
+            {performRedirect()}
             <p className="text-white text-center">{JSON.stringify(values)}</p> 
         </Base>
     )

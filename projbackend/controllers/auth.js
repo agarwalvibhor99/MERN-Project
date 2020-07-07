@@ -23,7 +23,8 @@ exports.signup = (req, res) => {
         res.json({
             name: user.name,
             email: user.email,
-            id: user._id
+            id: user._id,
+            // role: user.role
         })
     })        //err, user passed in databases when created also in firbase 
 }
@@ -59,8 +60,8 @@ exports.signin = (req, res) => {
         res.cookie("token", token, {expire: new Date() + 9999})
 
         //send response for frontend
-        const {_id, name, email, rol} = user
-        return res.json({token, user: {_id, name, email}})                  //Error role isn't defined
+        const {_id, name, email, role} = user
+        return res.json({token, user: {_id, name, email, role}})                  //Error role isn't defined
     })
 
 
