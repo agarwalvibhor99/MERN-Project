@@ -81,14 +81,15 @@ export const getProduct = productId => {
       method: "GET"
     })
       .then(response => {
-        return response.json()
+        return response.json();
       })
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
 
 //update a product
 export const updateProduct = (productId, userId, token, product) => {
+    console.log(`Product Id: ${productId}, userId: ${userId}, token: ${token}, Product: ${product}`)//
     return fetch(`${API}/product/${productId}/${userId}`, {
         method: "PUT",
         headers:{
@@ -98,6 +99,7 @@ export const updateProduct = (productId, userId, token, product) => {
         body: product
     })
     .then(response => {
+        console.log(response)
         return response.json()
     })
     .catch(err => console.log(err))

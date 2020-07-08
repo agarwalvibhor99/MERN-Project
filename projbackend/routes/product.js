@@ -13,7 +13,7 @@ router.param("productId", getProductById)
 
 //Routes
 router.post("/product/create/:userId", isSignedIn, isAuthenticated, isAdmin, createProduct)
-router.get("/product/create/:productId", getProduct)
+router.get("/product/:productId", getProduct)
 router.get("/product/photo/:productId", photo)
 
 //

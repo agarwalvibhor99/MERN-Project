@@ -60,7 +60,7 @@ exports.createProduct = (req, res) => {
     })
 }
 
-exports.getProduct = (res, req) => {
+exports.getProduct = (req, res) => {        //Changed
     req.product.photo = undefined
     return res.json(req.product)
 }
