@@ -13,6 +13,7 @@ export default function Home() {
     const loadAllProducts = () => {
         getAllProducts()
         .then(data => {
+
             if(data.error){
                 setError(data.error)
             }
@@ -34,7 +35,7 @@ export default function Home() {
                     {products.map((product, index) =>{
                         return(
                             <div key={index} className="col-4 mb-4">
-                                <Card />
+                                <Card product={product} />
                             </div>
                         )
                     })}

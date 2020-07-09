@@ -1,12 +1,10 @@
 import {API} from "../../backend"
 
 export const getAllProducts = () => {
-    return fetch('${API}/products',
+    return fetch(`${API}/products`,
      {method: "GET"})
     .then(response => {
-
-        console.log(response)
-        return response.json()
+        return response.json()      //ERROR RESPONSE FROM DBS
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err)) //CANNOT CONNECT TO DBS
 }

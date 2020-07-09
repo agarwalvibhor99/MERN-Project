@@ -1,7 +1,7 @@
 import React from 'react'
 import {API} from "../../backend"
 
-const imageHelper = ({product}) => {
+const ImageHelper = ({product}) => {
         const imageurl = product ? `${API}/product/photo/${product._id}` : "https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     return (
         <img
@@ -13,4 +13,4 @@ const imageHelper = ({product}) => {
     )
 }
 
-export default imageHelper 
+export default ImageHelper 
