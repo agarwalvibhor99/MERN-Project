@@ -62,10 +62,10 @@ const UpdateProduct = ({ match }) => {
     getAllCategories().then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error });
-      } else {
+      } else {     
         setValues({
           categories: data,
-          formData: new FormData()
+          formData: new FormData() //To populate data
         });
       }
     });
@@ -77,9 +77,8 @@ const UpdateProduct = ({ match }) => {
 
   //TODO: work on it
   const onSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
     setValues({ ...values, error: "", loading: true });
-
     updateProduct(match.params.productId, user._id, token, formData).then(
       data => {
         if (data.error) {
@@ -94,11 +93,11 @@ const UpdateProduct = ({ match }) => {
             stock: "",
             loading: false,
             createdProduct: data.name
-          });
+          })
         }
       }
-    );
-  };
+    )
+  }
 
   const handleChange = name => event => {
     const value = name === "photo" ? event.target.files[0] : event.target.value;
@@ -114,6 +113,8 @@ const UpdateProduct = ({ match }) => {
       <h4>{createdProduct} updated successfully</h4>
     </div>
   );
+
+  //error message
 
   const createProductForm = () => (
     <form>
